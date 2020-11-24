@@ -1,14 +1,17 @@
 import React from "react"
-import { ApplicationViews } from "./ApplicationViews"
-import { LocationList } from "./locations/LocationsList"
-import { LocationProvider } from "./locations/LocationsProvider"
+import { Route } from "react-router-dom"
 import { NavBar } from "./navbar/NavBar"
-import { ProductList } from "./products/ProductsList"
-import { ProductProvider } from "./products/ProductsProvider"
+import {ApplicationViews} from "./ApplicationViews"
 
-export const KandyKorner=()=>(
+// import "./KandyKorner.css"
+
+export const KandyKorner = () => {
+    console.log("hii!!")
+    return (
     <>
     <NavBar />
     <ApplicationViews />
-</>
+
+    </>
 )
+}

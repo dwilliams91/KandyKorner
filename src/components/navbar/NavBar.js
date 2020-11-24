@@ -5,12 +5,11 @@ import "./NavBar.css"
 export const NavBar=(props)=>{
     return (
         <ul className="navbar">
-            <li className="navBar__item active">
-                <Link className="navbar__Link" to="/"> Stores</Link>
-
+            <li className="navbar__item active">
+                <Link className="navbar__link" to="/">Location</Link>
             </li>
-            <li className="navBar__item active">
-                <Link className="navbar__Link" to="/products"> products</Link>
+            <li className="navbar__item">
+                <Link className="navbar__link" to="/products">products</Link>
             </li>
 
 

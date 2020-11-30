@@ -1,22 +1,26 @@
 import React from "react"
-import { Route } from "react-router-dom"
-import { NavBar } from "./navbar/NavBar"
+import { Route, Redirect } from "react-router-dom"
 import { ApplicationViews } from "./ApplicationViews"
+import { NavBar } from "./navbar/NavBar"
+import { Login } from "./auth/Login"
+import { Register } from "./auth/Register"
 
-// import "./KandyKorner.css"
+export const KandyKorner = () => (
+    <>
+        <Route render={() => {
+            if (localStorage.getItem("kandy_customer")) {
+                return (
+                    <>
+                        <Route render={props => <NavBar {...props} />} />
+                        <Route render={props => <ApplicationViews {...props} />} />
+                    </>
+                )
+            } else {
+                return <Redirect to="/login" />
+            }
+        }} />
 
-export const KandyKorner = () => {
-    console.log("hii!!")
-    return (
-        <>
-            <Route>
-                <NavBar/>
-            </Route>
-            <Route>
-                <ApplicationViews />
-
-            </Route>
-
-        </>
-    )
-}
+        <Route path="/login" render={props => <Login {...props} />} />
+        <Route path="/register" render={props => <Register {...props} />} />
+    </>
+)

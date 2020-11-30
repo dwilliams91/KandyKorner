@@ -19,19 +19,29 @@ export const EmployeeForm = (props) => {
     
     const hireNewEmployee = () => {
         const locationId = parseInt(location.current.value)
-        if (locationId === 0) {
-            window.alert("Please select a location")
-        } else {
-            addEmployee({
+        let newData=
+            {
                 name: name.current.value,
                 manager: manager.current.value,
                 fullTime: fullTime.current.value,
                 hourly: hourly.current.value,
                 locationId,
-            })
+            }
+            if (newData.manager==="true"){
+                newData.manager=true
+            } else{
+                newData.manager=false
+            }
+
+            if (newData.fullTime==="true"){
+                newData.fullTime=true
+            } else{
+                newData.fullTime=false
+            }
+        addEmployee(newData)
                 .then(() => props.history.push("/employees"))
         }
-    }
+    
     return (
         <>
         <form className="employeeForm">

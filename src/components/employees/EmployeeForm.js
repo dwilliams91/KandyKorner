@@ -3,8 +3,9 @@ import { LocationContext } from "../locations/LocationsProvider"
 import { EmployeeContext } from "./EmployeeProvider"
 
 export const EmployeeForm = (props) => {
+    console.log("is this working??")
     const { addEmployee } = useContext(EmployeeContext)
-    const { Location, getLocation } = useContext(LocationContext)
+    const { Location, getLocations } = useContext(LocationContext)
 
     const name = useRef(null)
     const location = useRef(null)
@@ -13,8 +14,8 @@ export const EmployeeForm = (props) => {
     const hourly = useRef(null)
 
     useEffect(() => {
-        getLocation()
-    })
+        getLocations()
+    }, [])
     const hireNewEmployee = () => {
         const locationId = parseInt(location.current.value)
         if (locationId === 0) {
@@ -32,17 +33,20 @@ export const EmployeeForm = (props) => {
     }
 
     return (
-        <form>
+        <>
+        <form className="employeeForm">
             <h2>Employee Form</h2>
             <fieldset>
-                <label htmlFor="employeeName">Employee Name</label>
-                <input type="text" id="employeeName" ref={name} placeholder="Employee Name"> </input>
-            </fieldset>
-            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="employeeName">Employee Name</label>
+                    <input type="text" id="employeeName" ref={name} required autoFocus className="form-control" placeholder="Employee name" />
 
+                </div>
 
             </fieldset>
+
         </form>
+        </>
     )
 
 

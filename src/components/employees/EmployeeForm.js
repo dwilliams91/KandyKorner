@@ -72,7 +72,7 @@ export const EmployeeForm = (props) => {
                 event.preventDefault()
                 hireNewEmployee()
             }}>
-
+                submit
             </button>
 
         </form>

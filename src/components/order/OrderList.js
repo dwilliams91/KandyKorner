@@ -35,7 +35,9 @@ export const OrderList = (props) => {
             })
             return goingThroughTheListAgain
         })
-        console.log(dublicateItems)
+       const anotherfilter= dublicateItems.filter(item=>item.length !== 0)
+        console.log(anotherfilter)
+        
     }
 
 

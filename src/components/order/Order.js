@@ -3,7 +3,7 @@ import "./Order.css"
 import {ProductContext} from "../products/ProductsProvider"
 
 export const Order = ({ product }) => {
-    
+    console.log(product)
 //     const {Products, getProducts}=useContext(ProductContext)
 // // get the current user
 
@@ -20,12 +20,15 @@ export const Order = ({ product }) => {
 
   return  (
     <>
-    <tr>
-    <td>
+    <tr className="table-row">
+    <td className="tableItem">
      {product.name}
     </td>
-    <td>
-        ${product.price}
+    <td className="tableItem">
+        {product.counter}
+    </td>
+    <td className="tableItem">
+        ${product.price*product.counter}
     </td>
 
     </tr>

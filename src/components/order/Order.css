@@ -1,3 +1,10 @@
 .orderItem{
     display:flex;
 }
+.table-row{
+    display:flex;
+    justify-content: space-between;
+}
+.tableItem{
+    margin:5px;
+}

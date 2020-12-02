@@ -29,12 +29,8 @@ export const OrderList = (props) => {
 
     const filterFunction = (myArray) => {
         let onlyMyProducts = myArray.filter(singleCustomerProduct => user === singleCustomerProduct.customerId)
-        // console.log(onlyMyProducts)
         const finalArray=[]
-        // const summary = onlyMyProducts.reduce((accumulator, item) => Object.assign(accumulator, {
-        //     [item.name]: (accumulator[item.name] || 0) + 1
-        //   }), {});
-        //   console.log(summary)
+  
         const newArray=onlyMyProducts.map(singleProduct=>{
             // return an array 
             const foundObj=finalArray.find(e=>e.name===singleProduct.product.name)
@@ -49,40 +45,36 @@ export const OrderList = (props) => {
                 finalArray.push(newItem)
             }
 
-            console.log(singleProduct)
+            // console.log(singleProduct)
 
-            // {
-            //     Name: chocolate
-                // price:7
-                // counter:3
-            // }
+           
             return singleProduct
         })
         console.log(finalArray)
-        
-        const reducedArray=onlyMyProducts.reduce((acc, cv)=>{
-            // return an array 
-            const foundObj=acc.find(e=>e.name===cv.product.name)
-            if (foundObj){
-                foundObj.counter++
-            } else{
-                const newItem={
-                    name:cv.product.name,
-                    price: cv.product.price,
-                    counter:1
-                }
-                acc.push(newItem)
-            }
-            return acc
-        },[])
-        console.log(reducedArray)
+        // COOL WAY TO DO IT
+        // const reducedArray=onlyMyProducts.reduce((acc, cv)=>{
+        //     // return an array 
+        //     const foundObj=acc.find(e=>e.name===cv.product.name)
+        //     if (foundObj){
+        //         foundObj.counter++
+        //     } else{
+        //         const newItem={
+        //             name:cv.product.name,
+        //             price: cv.product.price,
+        //             counter:1
+        //         }
+        //         acc.push(newItem)
+        //     }
+        //     return acc
+        // },[])
+        // console.log(reducedArray)
             
    
-
+        return finalArray
 
     }
 
-
+    
 
     return (
         <>
@@ -91,14 +83,12 @@ export const OrderList = (props) => {
                     <tbody>
 
                         {
-                            CustomerProducts.filter(singleCustomerProduct => user === singleCustomerProduct.customerId)
-                                .map(singleItem => {
+                            filterFunction(CustomerProducts).map(singleItem=>{
+                                console.log(singleItem)
+                                return <Order key={singleItem} product={singleItem}/> 
+                            })
 
-                                    const singleProduct = Products.find(e => e.id === singleItem.productId)
-
-                                    return <Order key={singleItem.id} product={singleProduct} />
-                                })
-
+                                    
                         }
 
 
@@ -106,7 +96,7 @@ export const OrderList = (props) => {
                     </tbody>
                 </table>
 
-                <button onClick={event => filterFunction(CustomerProducts)}> Add to Cart </button>
+                <button onClick={event => filterFunction(CustomerProducts)}> checkout </button>
             </div>
 
         </>

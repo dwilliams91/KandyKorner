@@ -7,13 +7,13 @@ export const CustomerProductsProvider=(props)=>{
     const [CustomerProducts, setCustomerProducts]=useState([])
     
     const getCustomerProducts = () => {
-        return fetch("http://localhost:8088/customerProducts")
+        return fetch("http://localhost:8088/customerProducts?_expand=product")
             .then(res => res.json())
             .then(setCustomerProducts)
     }
     
     const addCustomerProducts=product=>{
-        return fetch("http://localhost:8088/CustomerProducts",{
+        return fetch("http://localhost:8088/customerProducts",{
             method:"POST",
             headers:{
                 "Content-Type": "application/json"

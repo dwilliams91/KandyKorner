@@ -1,13 +1,38 @@
-import React from "react"
+import React, {useContext, useEffect} from "react"
+import "./Order.css"
+import {ProductContext} from "../products/ProductsProvider"
 
-export const Order=({product})=>(
-    <section className="product">
-        <h3 className="Product__Name">{product.name}</h3>
-    <p>Type: {product.productId}</p>
-    <p>Price: ${product.price}</p>
+export const Order = ({ product }) => {
+    
+//     const {Products, getProducts}=useContext(ProductContext)
+// // get the current user
 
 
-    </section>
+// useEffect(()=>{
+//     getProducts()
+// },[])
 
-)
+//    const newArray=product.map(singleItem=>{
+//         const singleProduct=Products.find(e=>e.id===singleItem.productId)
+//     return singleProduct
+//     })
+//     console.log(newArray)
+
+  return  (
+    <>
+    <tr>
+    <td>
+     {product.name}
+    </td>
+    <td>
+        ${product.price}
+    </td>
+
+    </tr>
+    
+    </>
+
+
+
+)}
 

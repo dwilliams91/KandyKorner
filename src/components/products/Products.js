@@ -15,7 +15,7 @@ export const Product = ({ product }) => {
             productId: product.id
 
         }
-        console.log(itemToAddToCart)
+        // console.log(itemToAddToCart)
         addCustomerProducts(itemToAddToCart)
     }
 
